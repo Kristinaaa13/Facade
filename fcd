@@ -1,0 +1,37 @@
+# Підсистема 1
+class Subsystem1:
+    def operation1(self):
+        return "Subsystem 1: Operation 1"
+
+    def operation2(self):
+        return "Subsystem 1: Operation 2"
+
+# Підсистема 2
+class Subsystem2:
+    def operation1(self):
+        return "Subsystem 2: Operation 1"
+
+    def operation2(self):
+        return "Subsystem 2: Operation 2"
+
+# Фасад
+class Facade:
+    def __init__(self, subsystem1, subsystem2):
+        self._subsystem1 = subsystem1
+        self._subsystem2 = subsystem2
+
+    def operation(self):
+        result = "Facade orders subsystems to perform the operations:\n"
+        result += self._subsystem1.operation1()
+        result += self._subsystem1.operation2()
+        result += self._subsystem2.operation1()
+        result += self._subsystem2.operation2()
+        return result
+
+# Використання
+subsystem1 = Subsystem1()
+subsystem2 = Subsystem2()
+
+facade = Facade(subsystem1, subsystem2)
+result = facade.operation()
+print(result)
